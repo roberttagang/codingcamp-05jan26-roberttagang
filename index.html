@@ -46,8 +46,13 @@
 
       <!-- Filter Options -->
       <button class="border rounded p-2 bg-green-500 text-white">Filter Todos</button>
-    </section>
-
+    </section> 
+      <!-- Filter Options -->
+<div class="flex gap-2">
+  <button onclick="filterTodos('all')" class="border rounded p-2 bg-blue-500 text-white">All</button>
+  <button onclick="filterByDate('today')" class="border rounded p-2 bg-purple-500 text-white">Today</button>
+  <button onclick="filterByDate('week')" class="border rounded p-2 bg-pink-500 text-white">This Week</button>
+</div>
     <!-- Todo List Section -->
     <section>
       <h2 class="text-xl font-semibold mb-2">List of Todos</h2>

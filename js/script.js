@@ -83,3 +83,43 @@ function loadTodos() {
   todoList.innerHTML = ""; // reset list
   todos.forEach(todo => renderTodo(todo));
 }
+// Filter berdasarkan tanggal
+function filterByDate(option = "today") {
+  let todos = JSON.parse(localStorage.getItem("todos")) || [];
+  todoList.innerHTML = "";
+
+  const today = new Date().toISOString().split("T")[0]; // format YYYY-MM-DD
+
+  let filtered = todos;
+
+  if (option === "today") {
+    filtered = todos.filter(t => t.date === today);
+  } else if (option === "week") {
+    const now = new Date();
+    const startOfWeek = new Date(now.setDate(now.getDate() - now.getDay())); // Minggu
+    const endOfWeek = new Date(now.setDate(startOfWeek.getDate() + 6)); // Sabtu
+
+    filtered = todos.filter(t => {
+      if (t.date === "No date") return false;
+      const todoDate = new Date(t.date);
+      return todoDate >= startOfWeek && todoDate <= endOfWeek;
+    });
+  }
+
+  filtered.forEach(todo => renderTodo(todo));
+}
+// Filter todos berdasarkan status
+function filterTodos(status = "all") {
+  let todos = JSON.parse(localStorage.getItem("todos")) || [];
+  todoList.innerHTML = "";
+
+  let filtered = todos;
+
+  if (status === "completed") {
+    filtered = todos.filter(t => t.completed);
+  } else if (status === "pending") {
+    filtered = todos.filter(t => !t.completed);
+  }
+
+  filtered.forEach(todo => renderTodo(todo));
+}
