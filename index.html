@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List - RAT</title>
+
+  <!-- CSS External -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="bg-gray-100 font-sans">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white p-4">
+    <h1 class="text-2xl font-bold text-center">Todo List Website - RAT</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto p-4">
+    <!-- Form Section -->
+    <section class="mb-4">
+      <form onsubmit="event.preventDefault(); addTodo();" class="flex flex-col gap-2">
+        <!-- Todo Input -->
+        <label for="todo-input" class="font-semibold">Todo Item:</label>
+        <input class="border rounded p-2" type="text" id="todo-input" placeholder="Enter a new todo item">
+
+        <!-- Date Input -->
+        <label for="todo-date" class="font-semibold">Due Date:</label>
+        <input class="border rounded p-2" type="date" id="todo-date">
+
+        <!-- Add Button -->
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2" type="submit">
+          Add Todo
+        </button>
+      </form>
+    </section>
+
+    <!-- Action Section -->
+    <section class="flex justify-between mb-4">
+      <!-- Clear All Button -->
+      <button onclick="removeAllTodo()" class="border rounded p-2 bg-red-500 text-white">Clear All Todos</button>
+
+      <!-- Filter Options -->
+      <button class="border rounded p-2 bg-green-500 text-white">Filter Todos</button>
+    </section>
+
+    <!-- Todo List Section -->
+    <section>
+      <h2 class="text-xl font-semibold mb-2">List of Todos</h2>
+      <ul id="todo-list" class="space-y-2">
+        <li class="text-gray-500">No todos available</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-200 text-center p-4 mt-6">
+    <p>© 2026 RAT's Todo List</p>
+  </footer>
+
+  <!-- JS External -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
